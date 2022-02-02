@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+<head>
+
+    
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+        <title>Warehouse</title>
+    
+        <!-- Bootstrap -->
+        <link href="./warehouseFiles/bootstrap.min.css" rel="stylesheet">
+        <link href="./style.css" rel="stylesheet">
+    
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+  
+
+
+    <script src="js/aesthetic/navigationBar.js"></script>
+   
+    
+ 
+
+
+</head>
+<body>
+     
+    <!-- //header should not be large font, should first say Acme Warehouse and under that 
+    //recylce widgets svg styling 
+   //  -->
+   
+    <h1 class='mt-3'>AcmeWarehouse</h1>
+    <h5 class='inline ml-3'>User:</h5><p class='inline'id="userNow">stayHidden</p> 
+    
+
+
+<ul>
+  <li><a href="#owner" onclick=showOwnerArea()>Owner Area</a></li>
+  <li><a href="#storeman" onclick=showStoreManArea()>Store Man Area</a></li>
+  <li><a href="#customer" onclick=showCustomerArea()>Customer Area</a></li>
+  <li style="float:right"><a href="#about">About</a></li>
+</ul>
+
+<div id="ownerArea">
+
+    <button class='admin-button pass-button'onClick="issuePass()">Issue a Pass <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-ticket-fill" viewBox="0 0 16 16">
+      <path d="M1.5 3A1.5 1.5 0 0 0 0 4.5V6a.5.5 0 0 0 .5.5 1.5 1.5 0 1 1 0 3 .5.5 0 0 0-.5.5v1.5A1.5 1.5 0 0 0 1.5 13h13a1.5 1.5 0 0 0 1.5-1.5V10a.5.5 0 0 0-.5-.5 1.5 1.5 0 0 1 0-3A.5.5 0 0 0 16 6V4.5A1.5 1.5 0 0 0 14.5 3h-13Z"/>
+    </svg></button>
+    <div class='admin-display'>
+    <h5>Warehouse Owner:</h5><p class="addressDetails" id="getMeTheManager">owner address</p>
+    <h5>Accounts Department:</h5><p class="addressDetails" id="accountsDepartmentAddress">accounts department address</p>
+    <h5>Widget Address:</h5><p class="addressDetails" id="widgetFactoryAddress">widgetFactory address</p>
+    <h5>Warehouse Address:</h5><p class="addressDetails" id="warehouseAddress">warehouse address</p>
+    <h5>Currency Used Address:</h5><p class="addressDetails" id="currencyAddress">currency address</p>
+    <button class='admin-button'onclick="refereshAddresses()"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-arrow-clockwise refresh-button" viewBox="0 0 16 16">
+      <path fill-rule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2v1z"/>
+      <path d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466z"/>
+    </svg></button>
+  </div>
+</div>
+
+
+<div id="storeman">
+    <div class='storeman-display'>
+      <div id="passes">
+      <input class='text-input-address'id='addressToCheckForPass' value=0x />Address to check for pass </input>
+      <button class='storeman-button'onClick='document.getElementById("addressToCheckForPass").value=document.getElementById("userNow").innerHTML;'>Use Current Account</button>
+      <p class='h1-size'id="storemanPassesInPossession">Passes possessed</p> 
+      <button  class='storeman-button mb-2'onClick="DisplayPasses()">Show Passes Held</button > 
+      
+    </div>
+  </div>
+    
+                  
+          <div class='storeman-functions'>
+          <div id="widgetMakerSection">
+                    <input class='text-input'id="widgetsToMake" value=1>Widgets to make</input>
+                    <button  class='storeman-button' onClick="makeWidgets()"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-node-plus" viewBox="0 0 16 16">
+                      <path fill-rule="evenodd" d="M11 4a4 4 0 1 0 0 8 4 4 0 0 0 0-8zM6.025 7.5a5 5 0 1 1 0 1H4A1.5 1.5 0 0 1 2.5 10h-1A1.5 1.5 0 0 1 0 8.5v-1A1.5 1.5 0 0 1 1.5 6h1A1.5 1.5 0 0 1 4 7.5h2.025zM11 5a.5.5 0 0 1 .5.5v2h2a.5.5 0 0 1 0 1h-2v2a.5.5 0 0 1-1 0v-2h-2a.5.5 0 0 1 0-1h2v-2A.5.5 0 0 1 11 5zM1.5 7a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1z"/>
+                    </svg></button >
+          </div>
+
+          <div id="widgetRecyclerSection">
+            <input class='text-input' id="widgetsToRecycle" value=1>Widgets to recycle</input>
+            <button class='storeman-button' onClick="recycleWidgets()"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-recycle" viewBox="0 0 16 16">
+              <path d="M9.302 1.256a1.5 1.5 0 0 0-2.604 0l-1.704 2.98a.5.5 0 0 0 .869.497l1.703-2.981a.5.5 0 0 1 .868 0l2.54 4.444-1.256-.337a.5.5 0 1 0-.26.966l2.415.647a.5.5 0 0 0 .613-.353l.647-2.415a.5.5 0 1 0-.966-.259l-.333 1.242-2.532-4.431zM2.973 7.773l-1.255.337a.5.5 0 1 1-.26-.966l2.416-.647a.5.5 0 0 1 .612.353l.647 2.415a.5.5 0 0 1-.966.259l-.333-1.242-2.545 4.454a.5.5 0 0 0 .434.748H5a.5.5 0 0 1 0 1H1.723A1.5 1.5 0 0 1 .421 12.24l2.552-4.467zm10.89 1.463a.5.5 0 1 0-.868.496l1.716 3.004a.5.5 0 0 1-.434.748h-5.57l.647-.646a.5.5 0 1 0-.708-.707l-1.5 1.5a.498.498 0 0 0 0 .707l1.5 1.5a.5.5 0 1 0 .708-.707l-.647-.647h5.57a1.5 1.5 0 0 0 1.302-2.244l-1.716-3.004z"/>
+            </svg></button > 
+          </div>
+        </div>
+</div>
+
+<div id="customerArea" class='customer-div'>
+
+    <div class='d-flex align-items-center'> 
+      <h2> In Stock:</h2> <p class='font-36' id="widgetsAtSilo"> none</p > <button class='blue-button'onClick="howManyWidgetsInStock()">
+      <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-arrow-clockwise refresh-button" viewBox="0 0 16 16">
+        <path fill-rule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2v1z"/>
+        <path d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466z"/>
+      </svg></div>
+
+    </button>
+ <div class='d-flex'>
+    <h4> Quantity:</h4><input class='text-input'id="widgetsToBuy" value=1></input>
+    <button class='blue-button orange-type'onClick="buyWidget()">Buy Now</button>
+  </div>
+</div>
+ <div class='admin-display'><p>more features at <a href="https://oneclickdapp.com/locate-lunar">features still only on back end</a></p></div>
+
+</body>
+
+   <!-- JQuery -->
+   <script src="./warehouseFiles/jquery.min.js.download"></script>
+   <!-- Bootstrap -->
+   <script src="./warehouseFiles/bootstrap.min.js.download"></script>
+   <!-- Web3.js -->
+   <script src="./warehouseFiles/web3.min.js.download"></script>
+
+<!-- contract details change the address and abi from abi.js -->
+   <script src="silo_abi.js"></script>
+
+   <script src="setupNetwork.js"></script>
+   <script src="siloBlockChainFunctions.js"></script>
+   
+   <script>
+howManyWidgetsInStock()
+function showCurrentUser(){
+ var account0;
+ web3.eth.getAccounts((err, res) => {
+   console.log(res[0]);
+                  account0=res[0];
+                  document.getElementById("userNow").innerHTML=account0;
+
+   }
+);
+}
+
+ showCurrentUser();
+ showCustomerArea();
+ refereshAddresses()
+
+function refereshAddresses(){
+ seeOwner();
+ seeAccountsDepartment();
+ seeFactoryAddress();
+ seeWarehouseAddress();
+ seeCurrencyAddress();
+
+}
+
+
+
+
+
+
+   </script>
+</html>

@@ -1,0 +1,18 @@
+deployer owner 0x77724352b8052aA58e253e63257b8eFAbE0DE46B
+
+sterling address 0xEBfC8535Eee2E9CA257fC6c3f978FFE64f57Eb22
+
+widget factory address 0x7787D3aAb14f23550E5a6AC28813E04A5B0c46D0 
+
+
+warehouse 0x15d260626aCbcCb258e278112e65ec5f8f529953
+
+
+
+accountant 0x7445B051078eE49ae2cd6add1b9f2183d8F6bbd7
+
+storeman 0xAA5b62083eB1979d115822C5554F16BF1b1E4b53
+
+customer 0x40ec12591A322bde7782c2bd32D91A34e4b6a0Cd
+
+https://oneclickdapp.com/story-belgium
